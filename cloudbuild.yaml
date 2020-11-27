@@ -1,0 +1,29 @@
+steps:
+  # generate the docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'eu.gcr.io/$PROJECT_ID/${_ROOT}/${_NAME}'
+      - '.'
+  #   push the docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push', 'eu.gcr.io/$PROJECT_ID/${_ROOT}/${_NAME}' ]
+
+  #deploy the docker image
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args:
+      - 'gcloud'
+      - 'run'
+      - 'deploy'
+      - '${_NAME}'
+      - '--platform=managed'
+      - '--region=europe-west3'
+      - '--allow-unauthenticated'
+      - '--image=eu.gcr.io/$PROJECT_ID/${_ROOT}/${_NAME}'
+
+substitutions:
+  _ROOT: cloudrun
+  _NAME: agritech-lora-ingress-http-go
+
+images: [ 'eu.gcr.io/$PROJECT_ID/${_ROOT}/${_NAME}' ]

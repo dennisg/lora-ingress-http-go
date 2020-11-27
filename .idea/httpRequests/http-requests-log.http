@@ -1,0 +1,58 @@
+POST http://localhost:8080/api/ttn/ingress
+Content-Type: application/json
+Authorization: Bearer secret
+
+{ "app_id": "test", "metadata" :  { "time": "1971-05-31'T'00:01:02.000Z" }}
+
+###
+
+POST http://localhost:8080/api/ttn/ingress
+Content-Type: application/json
+Authorization: Bearer secret
+
+{ "app_id": "test", "metdata" :  { "time": "1971-05-31'T'00:01:02.000Z" }}
+
+###
+
+POST http://localhost:8080/api/ttn/ingress
+Content-Type: application/json
+Authorization: Bearer secret
+
+{ "app_id": "test", "metdata" :  { "time": "1971-05-31'T'00:01:02.000Z" }}
+
+###
+
+POST http://localhost:8080/api/ttn/ingress
+Content-Type: application/json
+Authorization: Bearer secret
+
+{ "app_id": "test" }
+
+###
+
+POST http://localhost:8080/api/ttn/ingress
+Content-Type: application/json
+Authorization: Bearer secret
+
+{ "app_id": "test" }
+
+###
+
+POST http://localhost:8080/api/ttn/ingress
+Content-Type: application/json
+Authorization: Bearer secret
+
+{ "app_id": "test" }
+
+###
+
+POST http://localhost:8080/api/ttin/ingress
+Content-Type: application/json
+Authorization: Bearer secret
+
+{ "app_id": "test" }
+
+<> 2020-11-27T082020.404.txt
+
+###
+

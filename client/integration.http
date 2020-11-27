@@ -1,0 +1,5 @@
+POST http://localhost:8080/api/ttn/ingress
+Content-Type: application/json
+Authorization: Bearer 972f36b3-569c-462d-8ca6-9e6b6c8205dd
+
+{ "app_id": "test", "metadata" :  { "time": "1971-05-31'T'00:01:02.000Z" }}
