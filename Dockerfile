@@ -9,6 +9,7 @@ ADD cmd /src/cmd
 ADD vendor /src/vendor
 
 WORKDIR /src/cmd/main
+RUN go test
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /main .
 
 FROM scratch as container
@@ -20,7 +21,8 @@ ENV PORT=8080
 ENV GOROOT=/
 ENV TZ=Europe/Amsterdam
 
-ENV TARGET_TOPIC="projects/things-running/topics/agritech-lora-ttn-ingress"
+#ENV ACCESS_TOKEN=""
+#ENV TARGET_TOPIC="projects/things-running/topics/agritech-lora-ttn-ingress"
 
 WORKDIR /
 ENTRYPOINT ["/main"]

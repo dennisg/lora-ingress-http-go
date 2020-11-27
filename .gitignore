@@ -1,1 +1,5 @@
 /*.json
+/.env
+/cmd/main/main
+/client
+/client/

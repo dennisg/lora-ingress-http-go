@@ -6,6 +6,7 @@ steps:
       - '-t'
       - 'eu.gcr.io/$PROJECT_ID/${_ROOT}/${_NAME}'
       - '.'
+
   #   push the docker image
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'push', 'eu.gcr.io/$PROJECT_ID/${_ROOT}/${_NAME}' ]
@@ -16,14 +17,22 @@ steps:
       - 'gcloud'
       - 'run'
       - 'deploy'
-      - '${_NAME}'
+      - '${_NAME}-${_ENV}'
       - '--platform=managed'
+      - '--concurrency=10'
       - '--region=europe-west3'
       - '--allow-unauthenticated'
+      - '--service-account=${_SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com'
+      - '--set-env-vars=ACCESS_TOKEN=${_ACCESS_TOKEN},TARGET_TOPIC=${_TOPIC}'
       - '--image=eu.gcr.io/$PROJECT_ID/${_ROOT}/${_NAME}'
 
 substitutions:
-  _ROOT: cloudrun
+  _ROOT: agritech
   _NAME: agritech-lora-ingress-http-go
+  _ENV: dev
+  _ACCESS_TOKEN: change_me
+  _TOPIC: projects/${PROJECT_ID}/topics/changes_me
+  _SERVICE_ACCOUNT_NAME: change_me
+
 
 images: [ 'eu.gcr.io/$PROJECT_ID/${_ROOT}/${_NAME}' ]

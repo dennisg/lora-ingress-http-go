@@ -6,7 +6,6 @@ type MessageBus interface {
 	Send(id string, data []byte) error
 }
 
-
 type TtnMessage struct {
 	AppID          string        `json:"app_id"`
 	DevID          string        `json:"dev_id"`
@@ -20,8 +19,10 @@ type TtnMessage struct {
 	Metadata       Metadata      `json:"metadata"`
 	DownlinkURL    string        `json:"downlink_url"`
 }
+
 type PayloadFields struct {
 }
+
 type Gateways struct {
 	GtwID     string    `json:"gtw_id"`
 	Timestamp int       `json:"timestamp"`
@@ -34,6 +35,7 @@ type Gateways struct {
 	Longitude float64   `json:"longitude"`
 	Altitude  int       `json:"altitude"`
 }
+
 type Metadata struct {
 	Time       time.Time  `json:"time"`
 	Frequency  float64    `json:"frequency"`

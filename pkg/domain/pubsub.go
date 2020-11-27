@@ -30,6 +30,7 @@ type pubsubMessageBus struct {
 	topic string
 }
 
+//send to pubsub
 func (p *pubsubMessageBus) Send(id string, data []byte) error {
 	fmt.Printf("data: %s\r\n", string(data))
 	encoded := base64.StdEncoding.EncodeToString(data)
